@@ -10,6 +10,7 @@ This document outlines the phased implementation of the CryptoVault application.
 *   **2026-03-24**: Phase 2 completed. Established Clean Architecture directory structure. Implemented core classes for Failures, UseCases, and AppTheme (Material 3). Set up dependency injection using `GetIt` and initialized Hive.
 *   **2026-03-24**: Phase 3 completed. Defined `Coin` and `HistoricalData` entities. Created `CryptoRepository` interface. Implemented Use Cases for getting top coins, coin details, and historical data. Added `dartz` package for functional error handling.
 *   **2026-03-24**: Phase 4 completed. Implemented `CoinModel` and `HistoricalDataModel` with JSON serialization. Created `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`. Implemented `CryptoRepositoryImpl`. Set up API configuration and secured it with `.gitignore`. Registered all dependencies in the injection container.
+*   **2026-03-24**: Phase 5 completed. Implemented `PortfolioItem` entity and `PortfolioItemModel` with Hive annotations. Created `PortfolioLocalDataSource` and `PortfolioRepositoryImpl`. Implemented use cases for managing the portfolio. Generated Hive adapters and registered them in the injection container.
 
 ---
 
@@ -71,15 +72,15 @@ This document outlines the phased implementation of the CryptoVault application.
   - [ ] Wait for user approval.
 
 ## Phase 5: Domain & Data Layer (Portfolio)
-- [ ] Define `PortfolioItem` entity and model.
-- [ ] Set up Hive TypeAdapters for `PortfolioItem`.
-- [ ] Create `PortfolioRepository` interface and implementation.
-- [ ] Implement `PortfolioLocalDataSource` using `hive_ce`.
-- [ ] Implement Use Cases: `GetPortfolio`, `AddAsset`, `RemoveAsset`.
-- [ ] **Validation Phase**:
-  - [ ] Write unit tests for portfolio logic and Hive integration.
-  - [ ] Run `dart_fix`, `analyze_files`, `dart_format`.
-  - [ ] Update `IMPLEMENTATION.md` journal and check boxes.
+- [x] Define `PortfolioItem` entity and model.
+- [x] Set up Hive TypeAdapters for `PortfolioItem`.
+- [x] Create `PortfolioRepository` interface and implementation.
+- [x] Implement `PortfolioLocalDataSource` using `hive_ce`.
+- [x] Implement Use Cases: `GetPortfolio`, `AddAsset`, `RemoveAsset`.
+- [x] **Validation Phase**:
+  - [x] Write unit tests for portfolio logic and Hive integration.
+  - [x] Run `dart_fix`, `analyze_files`, `dart_format`.
+  - [x] Update `IMPLEMENTATION.md` journal and check boxes.
   - [ ] `git diff` and commit with message "feat: implement portfolio domain and data layers with Hive".
   - [ ] Wait for user approval.
 
