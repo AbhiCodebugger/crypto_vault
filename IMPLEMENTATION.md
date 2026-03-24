@@ -7,6 +7,7 @@ This document outlines the phased implementation of the CryptoVault application.
 *   **2026-03-24**: Phase 1 completed. Created Flutter project with `empty` flag. Updated `pubspec.yaml` with necessary dependencies for BLoC, Hive, and UI. Removed boilerplate `test` directory. Initialized `CHANGELOG.md` and `README.md`.
     *   *Correction*: Adjusted `hive_ce_generator` version to `^1.11.1` for compatibility.
     *   *Platform Correction*: Restricted platforms to `android` and `ios` only, removing others.
+*   **2026-03-24**: Phase 2 completed. Established Clean Architecture directory structure. Implemented core classes for Failures, UseCases, and AppTheme (Material 3). Set up dependency injection using `GetIt` and initialized Hive.
 
 ---
 
@@ -34,14 +35,14 @@ This document outlines the phased implementation of the CryptoVault application.
   - [ ] Wait for user approval of the commit.
 
 ## Phase 2: Core Architecture & Utilities
-- [ ] Define the project structure: `lib/core`, `lib/features`.
-- [ ] Implement `core/error/failures.dart` and `core/usecases/usecase.dart`.
-- [ ] Set up Dependency Injection with `get_it` in `lib/injection_container.dart`.
-- [ ] Configure `core/theme/app_theme.dart` for Material 3 Light/Dark themes.
-- [ ] **Validation Phase**:
-  - [ ] Create/modify unit tests for core utilities.
-  - [ ] Run `dart_fix`, `analyze_files`, `dart_format`.
-  - [ ] Update `IMPLEMENTATION.md` journal and check boxes.
+- [x] Define the project structure: `lib/core`, `lib/features`.
+- [x] Implement `core/error/failures.dart` and `core/usecases/usecase.dart`.
+- [x] Set up Dependency Injection with `get_it` in `lib/injection_container.dart`.
+- [x] Configure `core/theme/app_theme.dart` for Material 3 Light/Dark themes.
+- [x] **Validation Phase**:
+  - [x] Create/modify unit tests for core utilities.
+  - [x] Run `dart_fix`, `analyze_files`, `dart_format`.
+  - [x] Update `IMPLEMENTATION.md` journal and check boxes.
   - [ ] `git diff` and commit with message "feat: setup core architecture and theme".
   - [ ] Wait for user approval and `hot_reload`.
 
