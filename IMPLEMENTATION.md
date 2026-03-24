@@ -11,6 +11,7 @@ This document outlines the phased implementation of the CryptoVault application.
 *   **2026-03-24**: Phase 3 completed. Defined `Coin` and `HistoricalData` entities. Created `CryptoRepository` interface. Implemented Use Cases for getting top coins, coin details, and historical data. Added `dartz` package for functional error handling.
 *   **2026-03-24**: Phase 4 completed. Implemented `CoinModel` and `HistoricalDataModel` with JSON serialization. Created `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`. Implemented `CryptoRepositoryImpl`. Set up API configuration and secured it with `.gitignore`. Registered all dependencies in the injection container.
 *   **2026-03-24**: Phase 5 completed. Implemented `PortfolioItem` entity and `PortfolioItemModel` with Hive annotations. Created `PortfolioLocalDataSource` and `PortfolioRepositoryImpl`. Implemented use cases for managing the portfolio. Generated Hive adapters and registered them in the injection container.
+*   **2026-03-24**: Phase 6 completed. Implemented `CryptoBloc` for real-time tracking, `ChartBloc` for historical data, and `PortfolioBloc` for holdings management. Registered all Blocs as factories in the injection container.
 
 ---
 
@@ -85,13 +86,13 @@ This document outlines the phased implementation of the CryptoVault application.
   - [ ] Wait for user approval.
 
 ## Phase 6: Presentation Layer (BLoC)
-- [ ] Implement `CryptoBloc` for price tracking and list management.
-- [ ] Implement `ChartBloc` for historical data visualization logic.
-- [ ] Implement `PortfolioBloc` for managing user holdings.
-- [ ] **Validation Phase**:
-  - [ ] Write BLoC tests using `bloc_test`.
-  - [ ] Run `dart_fix`, `analyze_files`, `dart_format`.
-  - [ ] Update `IMPLEMENTATION.md` journal and check boxes.
+- [x] Implement `CryptoBloc` for price tracking and list management.
+- [x] Implement `ChartBloc` for historical data visualization logic.
+- [x] Implement `PortfolioBloc` for managing user holdings.
+- [x] **Validation Phase**:
+  - [x] Write BLoC tests using `bloc_test`.
+  - [x] Run `dart_fix`, `analyze_files`, `dart_format`.
+  - [x] Update `IMPLEMENTATION.md` journal and check boxes.
   - [ ] `git diff` and commit with message "feat: implement presentation logic with BLoC".
   - [ ] Wait for user approval and `hot_reload`.
 
