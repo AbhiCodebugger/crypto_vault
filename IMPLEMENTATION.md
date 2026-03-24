@@ -9,6 +9,7 @@ This document outlines the phased implementation of the CryptoVault application.
     *   *Platform Correction*: Restricted platforms to `android` and `ios` only, removing others.
 *   **2026-03-24**: Phase 2 completed. Established Clean Architecture directory structure. Implemented core classes for Failures, UseCases, and AppTheme (Material 3). Set up dependency injection using `GetIt` and initialized Hive.
 *   **2026-03-24**: Phase 3 completed. Defined `Coin` and `HistoricalData` entities. Created `CryptoRepository` interface. Implemented Use Cases for getting top coins, coin details, and historical data. Added `dartz` package for functional error handling.
+*   **2026-03-24**: Phase 4 completed. Implemented `CoinModel` and `HistoricalDataModel` with JSON serialization. Created `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`. Implemented `CryptoRepositoryImpl`. Set up API configuration and secured it with `.gitignore`. Registered all dependencies in the injection container.
 
 ---
 
@@ -59,13 +60,13 @@ This document outlines the phased implementation of the CryptoVault application.
   - [ ] Wait for user approval.
 
 ## Phase 4: Data Layer (Remote & API)
-- [ ] Create `CoinModel` and `HistoricalDataModel` in `lib/features/crypto/data/models/`.
-- [ ] Implement `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`.
-- [ ] Implement `CryptoRepositoryImpl`.
-- [ ] **Validation Phase**:
-  - [ ] Write unit tests for models and repository implementation.
-  - [ ] Run `dart_fix`, `analyze_files`, `dart_format`.
-  - [ ] Update `IMPLEMENTATION.md` journal and check boxes.
+- [x] Create `CoinModel` and `HistoricalDataModel` in `lib/features/crypto/data/models/`.
+- [x] Implement `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`.
+- [x] Implement `CryptoRepositoryImpl`.
+- [x] **Validation Phase**:
+  - [x] Write unit tests for models and repository implementation.
+  - [x] Run `dart_fix`, `analyze_files`, `dart_format`.
+  - [x] Update `IMPLEMENTATION.md` journal and check boxes.
   - [ ] `git diff` and commit with message "feat: implement crypto data layer and API integration".
   - [ ] Wait for user approval.
 
