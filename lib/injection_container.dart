@@ -12,8 +12,6 @@ import 'features/crypto/data/repositories/portfolio_repository_impl.dart';
 import 'features/crypto/data/datasources/portfolio_local_data_source.dart';
 import 'features/crypto/domain/usecases/portfolio_usecases.dart';
 import 'features/crypto/data/models/portfolio_item_model.dart';
-import 'features/crypto/domain/entities/portfolio_item.dart';
-import 'features/crypto/domain/entities/portfolio_item.g.dart';
 import 'features/crypto/presentation/bloc/crypto_bloc.dart';
 import 'features/crypto/presentation/bloc/chart_bloc.dart';
 import 'features/crypto/presentation/bloc/portfolio_bloc.dart';
@@ -61,7 +59,7 @@ Future<void> init() async {
   //! External
   await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(0)) {
-    Hive.registerAdapter(PortfolioItemAdapter());
+    Hive.registerAdapter(PortfolioItemModelAdapter());
   }
   sl.registerLazySingleton(() => portfolioBox);
   sl.registerLazySingleton(() => Dio());
