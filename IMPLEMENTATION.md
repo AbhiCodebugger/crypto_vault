@@ -8,6 +8,7 @@ This document outlines the phased implementation of the CryptoVault application.
     *   *Correction*: Adjusted `hive_ce_generator` version to `^1.11.1` for compatibility.
     *   *Platform Correction*: Restricted platforms to `android` and `ios` only, removing others.
 *   **2026-03-24**: Phase 2 completed. Established Clean Architecture directory structure. Implemented core classes for Failures, UseCases, and AppTheme (Material 3). Set up dependency injection using `GetIt` and initialized Hive.
+*   **2026-03-24**: Phase 3 completed. Defined `Coin` and `HistoricalData` entities. Created `CryptoRepository` interface. Implemented Use Cases for getting top coins, coin details, and historical data. Added `dartz` package for functional error handling.
 
 ---
 
@@ -47,13 +48,13 @@ This document outlines the phased implementation of the CryptoVault application.
   - [ ] Wait for user approval and `hot_reload`.
 
 ## Phase 3: Domain Layer (Coins & Historical Data)
-- [ ] Define `Coin` and `HistoricalData` entities in `lib/features/crypto/domain/entities/`.
-- [ ] Create `CryptoRepository` interface.
-- [ ] Implement Use Cases: `GetTopCoins`, `GetCoinDetails`, `GetHistoricalData`.
-- [ ] **Validation Phase**:
-  - [ ] Write unit tests for use cases using `mocktail`.
-  - [ ] Run `dart_fix`, `analyze_files`, `dart_format`.
-  - [ ] Update `IMPLEMENTATION.md` journal and check boxes.
+- [x] Define `Coin` and `HistoricalData` entities in `lib/features/crypto/domain/entities/`.
+- [x] Create `CryptoRepository` interface.
+- [x] Implement Use Cases: `GetTopCoins`, `GetCoinDetails`, `GetHistoricalData`.
+- [x] **Validation Phase**:
+  - [x] Write unit tests for use cases using `mocktail`.
+  - [x] Run `dart_fix`, `analyze_files`, `dart_format`.
+  - [x] Update `IMPLEMENTATION.md` journal and check boxes.
   - [ ] `git diff` and commit with message "feat: implement crypto domain layer".
   - [ ] Wait for user approval.
 
