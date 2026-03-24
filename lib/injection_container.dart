@@ -19,6 +19,12 @@ import 'features/crypto/presentation/bloc/portfolio_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  //! External
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(0)) {
+    Hive.registerAdapter(PortfolioItemModelAdapter());
+  }
+
   //! Features - Crypto
 
   // BLoC
@@ -53,14 +59,12 @@ Future<void> init() async {
   sl.registerLazySingleton<PortfolioLocalDataSource>(
     () => PortfolioLocalDataSourceImpl(portfolioBox: sl()),
   );
+  sl.registerLazySingleton<Box<PortfolioItemModel>>(() => portfolioBox);
+
 
   //! Core
 
   //! External
-  await Hive.initFlutter();
-  if (!Hive.isAdapterRegistered(0)) {
-    Hive.registerAdapter(PortfolioItemModelAdapter());
-  }
-  sl.registerLazySingleton(() => portfolioBox);
   sl.registerLazySingleton(() => Dio());
 }
+

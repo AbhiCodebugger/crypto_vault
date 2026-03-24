@@ -14,6 +14,7 @@ This document outlines the phased implementation of the CryptoVault application.
 *   **2026-03-24**: Phase 6 completed. Implemented `CryptoBloc` for real-time tracking, `ChartBloc` for historical data, and `PortfolioBloc` for holdings management. Registered all Blocs as factories in the injection container.
 *   **2026-03-24**: Phase 7 completed. Built the full UI including `HomeScreen` with real-time list, `DetailsScreen` with interactive `fl_chart`, and `PortfolioScreen` with asset management. Implemented Material 3 theming across all screens.
 *   **2026-03-24**: Phase 8 completed. Finalized project documentation with comprehensive `README.md` and `GEMINI.md`. Performed a final visual audit and code cleanup. Verified architecture and file layout.
+*   **2026-03-25**: Added unit tests for `CoinModel`, `GetTopCoins` UseCase, and Repository implementations (`CryptoRepositoryImpl`, `PortfolioRepositoryImpl`). Verified all tests pass.
 
 ---
 

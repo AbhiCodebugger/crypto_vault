@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../../../core/api_config.dart';
 import '../../../../core/error/failures.dart';
@@ -18,12 +19,11 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
   @override
   Future<List<CoinModel>> getTopCoins() async {
     final response = await dio.get(
-      '${ApiConfig.baseUrl}/getTop',
-      options: Options(
-        headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'},
-      ),
+      '${ApiConfig.baseUrl}/getCryptoList',
+      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
     );
 
+    log("Response ${response.data}");
     if (response.statusCode == 200) {
       final List<dynamic> data = response.data;
       return data.map((json) => CoinModel.fromJson(json)).toList();
@@ -37,9 +37,7 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
     final response = await dio.get(
       '${ApiConfig.baseUrl}/getData',
       queryParameters: {'symbol': id},
-      options: Options(
-        headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'},
-      ),
+      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
     );
 
     if (response.statusCode == 200) {
@@ -57,9 +55,7 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
     final response = await dio.get(
       '${ApiConfig.baseUrl}/getHistory',
       queryParameters: {'symbol': id, 'days': days},
-      options: Options(
-        headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'},
-      ),
+      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
     );
 
     if (response.statusCode == 200) {

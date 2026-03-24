@@ -13,8 +13,7 @@ class PortfolioItemModel extends PortfolioItem {
   @override
   double get amount => super.amount;
 
-  const PortfolioItemModel({required String coinId, required double amount})
-    : super(coinId: coinId, amount: amount);
+  const PortfolioItemModel({required super.coinId, required super.amount});
 
   factory PortfolioItemModel.fromEntity(PortfolioItem entity) {
     return PortfolioItemModel(coinId: entity.coinId, amount: entity.amount);

@@ -16,6 +16,8 @@ class CoinModel extends Coin {
       id: json['symbol'] ?? '',
       symbol: json['symbol'] ?? '',
       name: json['name'] ?? '',
+      // /getCryptoList only returns symbol and name. 
+      // Other fields are defaulted or could be fetched via /getData later.
       currentPrice: (json['price'] as num?)?.toDouble() ?? 0.0,
       priceChangePercentage24h: (json['change'] as num?)?.toDouble() ?? 0.0,
       marketCap: (json['marketCap'] as num?)?.toDouble() ?? 0.0,

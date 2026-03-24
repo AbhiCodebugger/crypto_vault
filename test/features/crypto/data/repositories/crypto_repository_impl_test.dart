@@ -29,7 +29,7 @@ void main() {
     ),
   ];
 
-  group('getTopCoins', () {
+  group('getCryptoList', () {
     test('should return remote data when the call to remote data source is successful', () async {
       // arrange
       when(() => mockRemoteDataSource.getTopCoins()).thenAnswer((_) async => tCoinModels);

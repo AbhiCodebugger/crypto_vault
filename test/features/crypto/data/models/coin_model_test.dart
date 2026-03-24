@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:crypto_vault/features/crypto/data/models/coin_model.dart';
 import 'package:crypto_vault/features/crypto/domain/entities/coin.dart';
@@ -32,6 +31,19 @@ void main() {
       final result = CoinModel.fromJson(jsonMap);
 
       expect(result, tCoinModel);
+    });
+
+    test('should return a valid model when the JSON is from getCryptoList (only symbol and name)', () async {
+      final Map<String, dynamic> jsonMap = {
+        'symbol': 'btc',
+        'name': 'Bitcoin',
+      };
+
+      final result = CoinModel.fromJson(jsonMap);
+
+      expect(result.symbol, 'btc');
+      expect(result.name, 'Bitcoin');
+      expect(result.currentPrice, 0.0);
     });
   });
 
