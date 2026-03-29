@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/crypto_bloc.dart';
 import '../bloc/crypto_bloc_state.dart';
+import '../bloc/wishlist_bloc.dart';
+import '../bloc/wishlist_bloc_state.dart';
 import '../widgets/coin_list_item.dart';
 import 'wishlist_screen.dart';
+import 'details_screen.dart';
 import '../../../../core/theme/theme_toggle_button.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -42,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
+          _buildWishlistAvatars(),
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
@@ -115,6 +119,59 @@ class _HomeScreenState extends State<HomeScreen> {
       separatorBuilder: (context, index) => const Divider(),
       itemBuilder: (context, index) {
         return CoinListItem(coin: filteredCoins[index]);
+      },
+    );
+  }
+
+  Widget _buildWishlistAvatars() {
+    return BlocBuilder<WishlistBloc, WishlistState>(
+      builder: (context, state) {
+        if (state is WishlistLoaded && state.wishlist.isNotEmpty) {
+          return SizedBox(
+            height: 100,
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              scrollDirection: Axis.horizontal,
+              itemCount: state.wishlist.length,
+              itemBuilder: (context, index) {
+                final item = state.wishlist[index];
+                return Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => DetailsScreen(coin: item),
+                        ),
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Theme.of(
+                            context,
+                          ).colorScheme.surfaceContainerHighest,
+                          backgroundImage: NetworkImage(item.imageUrl),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          item.symbol.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }
