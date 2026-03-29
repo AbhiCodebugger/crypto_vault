@@ -10,11 +10,11 @@ This document outlines the phased implementation of the CryptoVault application.
 *   **2026-03-24**: Phase 2 completed. Established Clean Architecture directory structure. Implemented core classes for Failures, UseCases, and AppTheme (Material 3). Set up dependency injection using `GetIt` and initialized Hive.
 *   **2026-03-24**: Phase 3 completed. Defined `Coin` and `HistoricalData` entities. Created `CryptoRepository` interface. Implemented Use Cases for getting top coins, coin details, and historical data. Added `dartz` package for functional error handling.
 *   **2026-03-24**: Phase 4 completed. Implemented `CoinModel` and `HistoricalDataModel` with JSON serialization. Created `CryptoRemoteDataSource` using `dio` to connect to `freecryptoapi.io`. Implemented `CryptoRepositoryImpl`. Set up API configuration and secured it with `.gitignore`. Registered all dependencies in the injection container.
-*   **2026-03-24**: Phase 5 completed. Implemented `PortfolioItem` entity and `PortfolioItemModel` with Hive annotations. Created `PortfolioLocalDataSource` and `PortfolioRepositoryImpl`. Implemented use cases for managing the portfolio. Generated Hive adapters and registered them in the injection container.
-*   **2026-03-24**: Phase 6 completed. Implemented `CryptoBloc` for real-time tracking, `ChartBloc` for historical data, and `PortfolioBloc` for holdings management. Registered all Blocs as factories in the injection container.
-*   **2026-03-24**: Phase 7 completed. Built the full UI including `HomeScreen` with real-time list, `DetailsScreen` with interactive `fl_chart`, and `PortfolioScreen` with asset management. Implemented Material 3 theming across all screens.
+*   **2026-03-24**: Phase 5 completed. Implemented `WishlistItem` entity and `WishlistItemModel` with Hive annotations. Created `WishlistLocalDataSource` and `WishlistRepositoryImpl`. Implemented use cases for managing the wishlist. Generated Hive adapters and registered them in the injection container.
+*   **2026-03-24**: Phase 6 completed. Implemented `CryptoBloc` for real-time tracking, `ChartBloc` for historical data, and `WishlistBloc` for favorite coins. Registered all Blocs as factories in the injection container.
+*   **2026-03-24**: Phase 7 completed. Built the full UI including `HomeScreen` with real-time list, `DetailsScreen` with interactive `fl_chart`, and `WishlistScreen` for favorite coins tracking. Implemented Material 3 theming across all screens.
 *   **2026-03-24**: Phase 8 completed. Finalized project documentation with comprehensive `README.md` and `GEMINI.md`. Performed a final visual audit and code cleanup. Verified architecture and file layout.
-*   **2026-03-25**: Added unit tests for `CoinModel`, `GetTopCoins` UseCase, and Repository implementations (`CryptoRepositoryImpl`, `PortfolioRepositoryImpl`). Verified all tests pass.
+*   **2026-03-25**: Added unit tests for `CoinModel`, `GetTopCoins` UseCase, and Repository implementations (`CryptoRepositoryImpl`, `WishlistRepositoryImpl`). Verified all tests pass.
 
 ---
 
@@ -43,22 +43,22 @@ This document outlines the phased implementation of the CryptoVault application.
 - [x] Implement `CryptoRemoteDataSource` using `dio`.
 - [x] Implement `CryptoRepositoryImpl`.
 
-## Phase 5: Domain & Data Layer (Portfolio)
-- [x] Define `PortfolioItem` entity and model.
-- [x] Set up Hive TypeAdapters for `PortfolioItem`.
-- [x] Create `PortfolioRepository` interface and implementation.
-- [x] Implement `PortfolioLocalDataSource` using `hive_ce`.
-- [x] Implement Use Cases: `GetPortfolio`, `AddAsset`, `RemoveAsset`.
+## Phase 5: Domain & Data Layer (Wishlist)
+- [x] Define `WishlistItem` entity and model.
+- [x] Set up Hive TypeAdapters for `WishlistItem`.
+- [x] Create `WishlistRepository` interface and implementation.
+- [x] Implement `WishlistLocalDataSource` using `hive_ce`.
+- [x] Implement Use Cases: `GetWishlist`, `AddToWishlist`, `RemoveFromWishlist`.
 
 ## Phase 6: Presentation Layer (BLoC)
 - [x] Implement `CryptoBloc`.
 - [x] Implement `ChartBloc`.
-- [x] Implement `PortfolioBloc`.
+- [x] Implement `WishlistBloc`.
 
 ## Phase 7: UI Implementation (Screens & Charts)
 - [x] Build `HomeScreen`.
 - [x] Build `DetailsScreen`.
-- [x] Build `PortfolioScreen`.
+- [x] Build `WishlistScreen`.
 - [x] Implement navigation.
 
 ## Phase 8: Final Polish & Documentation

@@ -1,5 +1,5 @@
 name: crypto_vault
-description: "A real-time cryptocurrency price tracking and portfolio management app."
+description: "A real-time cryptocurrency price tracking and wishlist app."
 publish_to: 'none'
 version: 0.1.0
 

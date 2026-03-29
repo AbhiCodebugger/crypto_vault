@@ -1,12 +1,12 @@
 # CryptoVault
 
-A robust, real-time cryptocurrency price tracking and portfolio management application built with Flutter.
+A robust, real-time cryptocurrency price tracking and wishlist application built with Flutter.
 
 ## Features
 
 - **Real-time Price Tracking**: Stay updated with the latest market data for top cryptocurrencies.
 - **Historical Charts**: Visualize price trends over 24h, 7d, 30d, and 1y periods using interactive charts.
-- **Portfolio Management**: Securely manage your holdings locally with Hive storage.
+- **Wishlist**: Securely manage your favorite coins locally with Hive storage.
 - **Material 3 UI**: Modern, accessible design with full support for Light and Dark modes.
 - **Clean Architecture**: Built following SOLID principles for maximum maintainability and testability.
 

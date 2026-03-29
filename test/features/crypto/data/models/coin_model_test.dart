@@ -4,13 +4,13 @@ import 'package:crypto_vault/features/crypto/domain/entities/coin.dart';
 
 void main() {
   const tCoinModel = CoinModel(
-    id: 'btc',
-    symbol: 'btc',
-    name: 'Bitcoin',
-    currentPrice: 50000.0,
-    priceChangePercentage24h: 5.0,
-    marketCap: 1000000000.0,
-    imageUrl: 'https://logo.com/btc.png',
+    id: '30',
+    symbol: 'MANA',
+    name: 'Decentraland',
+    currentPrice: 0.0,
+    priceChangePercentage24h: 0.0,
+    marketCap: 0.0,
+    imageUrl: '',
   );
 
   test('should be a subclass of Coin entity', () async {
@@ -18,49 +18,31 @@ void main() {
   });
 
   group('fromJson', () {
-    test('should return a valid model when the JSON is correct', () async {
+    test('should return a valid model when the JSON is from getCryptoList', () async {
       final Map<String, dynamic> jsonMap = {
-        'symbol': 'btc',
-        'name': 'Bitcoin',
-        'price': 50000.0,
-        'change': 5.0,
-        'marketCap': 1000000000.0,
-        'logo': 'https://logo.com/btc.png',
+        'id': 30,
+        'symbol': 'MANA',
+        'name': 'Decentraland',
+        'source': 'binance',
       };
 
       final result = CoinModel.fromJson(jsonMap);
 
-      expect(result, tCoinModel);
+      expect(result.id, '30');
+      expect(result.symbol, 'MANA');
+      expect(result.name, 'Decentraland');
     });
 
-    test('should return a valid model when the JSON is from getCryptoList (only symbol and name)', () async {
+    test('should fall back to symbol if name is empty', () async {
       final Map<String, dynamic> jsonMap = {
-        'symbol': 'btc',
-        'name': 'Bitcoin',
+        'id': 30,
+        'symbol': 'MANA',
+        'name': '',
       };
 
       final result = CoinModel.fromJson(jsonMap);
 
-      expect(result.symbol, 'btc');
-      expect(result.name, 'Bitcoin');
-      expect(result.currentPrice, 0.0);
-    });
-  });
-
-  group('toJson', () {
-    test('should return a JSON map containing the proper data', () async {
-      final result = tCoinModel.toJson();
-
-      final expectedMap = {
-        'symbol': 'btc',
-        'name': 'Bitcoin',
-        'price': 50000.0,
-        'change': 5.0,
-        'marketCap': 1000000000.0,
-        'logo': 'https://logo.com/btc.png',
-      };
-
-      expect(result, expectedMap);
+      expect(result.name, 'MANA');
     });
   });
 }

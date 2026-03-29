@@ -1,12 +1,12 @@
 # Design Document - CryptoVault
 
 ## Overview
-CryptoVault is a mobile application for Android and iOS that provides real-time cryptocurrency price tracking, portfolio management, and historical price charts. The app is built with Flutter, following Clean Architecture principles and using the BLoC (Business Logic Component) pattern for state management. It leverages `freecryptoapi.io` for data and Hive for local storage.
+CryptoVault is a mobile application for Android and iOS that provides real-time cryptocurrency price tracking, wishlist management, and historical price charts. The app is built with Flutter, following Clean Architecture principles and using the BLoC (Business Logic Component) pattern for state management. It leverages `freecryptoapi.io` for data and Hive for local storage.
 
 ## Goal & Problem Analysis
 Users need a reliable, high-performance way to:
 1.  **Track Real-time Prices**: Stay updated with the latest market movements for various cryptocurrencies.
-2.  **Manage Portfolios**: Record their holdings (assets and amounts) and see the total value in real-time.
+2.  **Wishlist Management**: Add favorite coins to a wishlist for quick access and tracking.
 3.  **Analyze Historical Data**: View price trends over different periods (24h, 7d, 30d, 1y) to make informed decisions.
 4.  **Premium Experience**: Enjoy a modern, accessible UI with support for both light and dark themes (Material 3).
 
@@ -24,17 +24,16 @@ Users need a reliable, high-performance way to:
 ### Architecture Layers (Clean Architecture)
 1.  **Presentation Layer**:
     - **Widgets**: UI components using Material 3.
-    - **BLoCs**: Manage states for "Price Tracking", "Portfolio", and "Charts".
+    - **BLoCs**: Manage states for "Price Tracking", "Wishlist", and "Charts".
 2.  **Domain Layer**:
-    - **Entities**: Plain Dart objects like `Coin`, `PortfolioItem`, `HistoricalData`.
-    - **Use Cases**: `GetCoinsUseCase`, `UpdatePortfolioUseCase`, `GetHistoricalDataUseCase`.
-    - **Repositories (Interfaces)**: Define how the data layer should interact with the domain.
+    - **Entities**: Plain Dart objects like `Coin`, `WishlistItem`, `HistoricalData`.
+    - **Use Cases**: `GetCoinsUseCase`, `WishlistUseCase`, `GetHistoricalDataUseCase`.
 3.  **Data Layer**:
     - **Models**: DTOs for JSON (API) and TypeAdapters (Hive).
     - **Repositories (Implementations)**: Fetch data from remote (API) and local (Hive) sources.
     - **Data Sources**:
         - `RemoteDataSource`: Communicates with `freecryptoapi.io`.
-        - `LocalDataSource`: Manages Hive boxes for portfolio data.
+        - `LocalDataSource`: Manages Hive boxes for wishlist data.
 
 ### Data Flow (Mermaid)
 ```mermaid
@@ -56,7 +55,7 @@ graph TD
 - **API Client**: Uses `dio` to interact with `https://api.freecryptoapi.com/v1`.
 - **Local Database**: Hive boxes for:
     - `settings`: App preferences (theme mode).
-    - `portfolio`: User holdings.
+    - `wishlist`: Favorite coins.
 - **Charts**: Integration with a charting library (e.g., `fl_chart`) to visualize historical data.
 
 ### Theming (Material 3)

@@ -3,16 +3,16 @@
 // Check in to version control
 
 import 'package:hive_ce/hive_ce.dart';
-import 'package:crypto_vault/features/crypto/data/models/portfolio_item_model.dart';
+import 'package:crypto_vault/features/crypto/data/models/wishlist_item_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
-    registerAdapter(PortfolioItemModelAdapter());
+    registerAdapter(WishlistItemModelAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
-    registerAdapter(PortfolioItemModelAdapter());
+    registerAdapter(WishlistItemModelAdapter());
   }
 }

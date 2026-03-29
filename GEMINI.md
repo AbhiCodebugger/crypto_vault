@@ -8,16 +8,16 @@ CryptoVault is a cryptocurrency tracking application designed to demonstrate bes
 ### Clean Architecture (Feature-First)
 The project is structured by feature to allow for independent scaling.
 - `lib/core`: Shared utilities, error handling, and theme definitions.
-- `lib/features/crypto`: The primary feature set including market data and portfolio management.
+- `lib/features/crypto`: The primary feature set including market data and wishlist management.
 
 ### BLoC Pattern
 We used the **BLoC** pattern for state management to ensure a clear separation between UI events and business logic.
 - `CryptoBloc`: Manages the market list and detailed coin data.
 - `ChartBloc`: Handles the complexities of fetching and preparing historical data for visualization.
-- `PortfolioBloc`: Manages reactive updates to the user's local holdings.
+- `WishlistBloc`: Manages reactive updates to the user's favorite coins.
 
 ### Local-First with Hive
-**Hive CE** was chosen for local storage due to its exceptional performance and simplicity when working with Dart objects. Portfolio items are persisted locally and updated reactively in the UI.
+**Hive CE** was chosen for local storage due to its exceptional performance and simplicity when working with Dart objects. Wishlist items are persisted locally and updated reactively in the UI.
 
 ### Material 3 & Google Fonts
 The app uses a centralized `AppTheme` using `ColorScheme.fromSeed` to ensure a cohesive Material 3 look across both Light and Dark modes.

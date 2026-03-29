@@ -13,26 +13,29 @@ class CoinModel extends Coin {
 
   factory CoinModel.fromJson(Map<String, dynamic> json) {
     return CoinModel(
-      id: json['symbol'] ?? '',
+      id: json['id']?.toString() ?? json['symbol'] ?? '',
       symbol: json['symbol'] ?? '',
-      name: json['name'] ?? '',
-      // /getCryptoList only returns symbol and name. 
-      // Other fields are defaulted or could be fetched via /getData later.
-      currentPrice: (json['price'] as num?)?.toDouble() ?? 0.0,
-      priceChangePercentage24h: (json['change'] as num?)?.toDouble() ?? 0.0,
-      marketCap: (json['marketCap'] as num?)?.toDouble() ?? 0.0,
-      imageUrl: json['logo'] ?? '',
+      name:
+          (json['name'] != null && json['name'].toString().isNotEmpty)
+              ? json['name']
+              : (json['symbol'] ?? ''),
+      currentPrice: (json['current_price'] as num?)?.toDouble() ?? 0.0,
+      priceChangePercentage24h:
+          (json['price_change_percentage_24h'] as num?)?.toDouble() ?? 0.0,
+      marketCap: (json['market_cap'] as num?)?.toDouble() ?? 0.0,
+      imageUrl: json['image'] ?? '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'symbol': symbol,
       'name': name,
-      'price': currentPrice,
-      'change': priceChangePercentage24h,
-      'marketCap': marketCap,
-      'logo': imageUrl,
+      'current_price': currentPrice,
+      'price_change_percentage_24h': priceChangePercentage24h,
+      'market_cap': marketCap,
+      'image': imageUrl,
     };
   }
 }

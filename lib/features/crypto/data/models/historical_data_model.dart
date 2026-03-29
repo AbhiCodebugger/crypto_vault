@@ -3,10 +3,10 @@ import '../../domain/entities/historical_data.dart';
 class HistoricalDataModel extends HistoricalData {
   const HistoricalDataModel({required super.timestamp, required super.price});
 
-  factory HistoricalDataModel.fromJson(Map<String, dynamic> json) {
+  factory HistoricalDataModel.fromList(List<dynamic> list) {
     return HistoricalDataModel(
-      timestamp: DateTime.parse(json['date']),
-      price: (json['price'] as num).toDouble(),
+      timestamp: DateTime.fromMillisecondsSinceEpoch(list[0] as int),
+      price: (list[1] as num).toDouble(),
     );
   }
 }

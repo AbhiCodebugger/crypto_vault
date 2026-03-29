@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import '../../../../core/api_config.dart';
 import '../../../../core/error/failures.dart';
@@ -19,11 +18,16 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
   @override
   Future<List<CoinModel>> getTopCoins() async {
     final response = await dio.get(
-      '${ApiConfig.baseUrl}/getCryptoList',
-      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
+      '${ApiConfig.baseUrl}/coins/markets',
+      queryParameters: {
+        'vs_currency': 'usd',
+        'order': 'market_cap_desc',
+        'per_page': 50,
+        'page': 1,
+        'sparkline': false,
+      },
     );
 
-    log("Response ${response.data}");
     if (response.statusCode == 200) {
       final List<dynamic> data = response.data;
       return data.map((json) => CoinModel.fromJson(json)).toList();
@@ -35,13 +39,13 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
   @override
   Future<CoinModel> getCoinDetails(String id) async {
     final response = await dio.get(
-      '${ApiConfig.baseUrl}/getData',
-      queryParameters: {'symbol': id},
-      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
+      '${ApiConfig.baseUrl}/coins/markets',
+      queryParameters: {'vs_currency': 'usd', 'ids': id},
     );
 
     if (response.statusCode == 200) {
-      return CoinModel.fromJson(response.data[0]);
+      final List<dynamic> data = response.data;
+      return CoinModel.fromJson(data[0]);
     } else {
       throw ServerFailure();
     }
@@ -53,14 +57,13 @@ class CryptoRemoteDataSourceImpl implements CryptoRemoteDataSource {
     int days,
   ) async {
     final response = await dio.get(
-      '${ApiConfig.baseUrl}/getHistory',
-      queryParameters: {'symbol': id, 'days': days},
-      options: Options(headers: {'Authorization': 'Bearer ${ApiConfig.apiKey}'}),
+      '${ApiConfig.baseUrl}/coins/$id/market_chart',
+      queryParameters: {'vs_currency': 'usd', 'days': days},
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> data = response.data;
-      return data.map((json) => HistoricalDataModel.fromJson(json)).toList();
+      final List<dynamic> data = response.data['prices'];
+      return data.map((list) => HistoricalDataModel.fromList(list)).toList();
     } else {
       throw ServerFailure();
     }
